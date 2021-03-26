@@ -1,0 +1,257 @@
+[{
+    "source": "10号线_0",
+    "target": "10号线_1",
+    "value": 26268
+}, {
+    "source": "10号线_0",
+    "target": "11号线_1",
+    "value": 17361
+}, {
+    "source": "10号线_0",
+    "target": "12号线_1",
+    "value": 5254
+}, {
+    "source": "10号线_0",
+    "target": "1号线_1",
+    "value": 5352
+}, {
+    "source": "10号线_0",
+    "target": "2号线_1",
+    "value": 4712
+}, {
+    "source": "10号线_0",
+    "target": "3号线_1",
+    "value": 14576
+}, {
+    "source": "10号线_0",
+    "target": "4号线_1",
+    "value": 1341
+}, {
+    "source": "10号线_0",
+    "target": "5号线_1",
+    "value": 1275
+}, {
+    "source": "11号线_0",
+    "target": "10号线_1",
+    "value": 15311
+}, {
+    "source": "11号线_0",
+    "target": "11号线_1",
+    "value": 73802
+}, {
+    "source": "11号线_0",
+    "target": "12号线_1",
+    "value": 11953
+}, {
+    "source": "11号线_0",
+    "target": "1号线_1",
+    "value": 16829
+}, {
+    "source": "11号线_0",
+    "target": "2号线_1",
+    "value": 11568
+}, {
+    "source": "11号线_0",
+    "target": "3号线_1",
+    "value": 29682
+}, {
+    "source": "11号线_0",
+    "target": "4号线_1",
+    "value": 1486
+}, {
+    "source": "11号线_0",
+    "target": "5号线_1",
+    "value": 6841
+}, {
+    "source": "12号线_0",
+    "target": "10号线_1",
+    "value": 4395
+}, {
+    "source": "12号线_0",
+    "target": "11号线_1",
+    "value": 12800
+}, {
+    "source": "12号线_0",
+    "target": "12号线_1",
+    "value": 11947
+}, {
+    "source": "12号线_0",
+    "target": "1号线_1",
+    "value": 5850
+}, {
+    "source": "12号线_0",
+    "target": "2号线_1",
+    "value": 2862
+}, {
+    "source": "12号线_0",
+    "target": "3号线_1",
+    "value": 9418
+}, {
+    "source": "12号线_0",
+    "target": "4号线_1",
+    "value": 1194
+}, {
+    "source": "12号线_0",
+    "target": "5号线_1",
+    "value": 2195
+}, {
+    "source": "1号线_0",
+    "target": "10号线_1",
+    "value": 4647
+}, {
+    "source": "1号线_0",
+    "target": "11号线_1",
+    "value": 18060
+}, {
+    "source": "1号线_0",
+    "target": "12号线_1",
+    "value": 5565
+}, {
+    "source": "1号线_0",
+    "target": "1号线_1",
+    "value": 59428
+}, {
+    "source": "1号线_0",
+    "target": "2号线_1",
+    "value": 16493
+}, {
+    "source": "1号线_0",
+    "target": "3号线_1",
+    "value": 17645
+}, {
+    "source": "1号线_0",
+    "target": "4号线_1",
+    "value": 631
+}, {
+    "source": "1号线_0",
+    "target": "5号线_1",
+    "value": 1376
+}, {
+    "source": "2号线_0",
+    "target": "10号线_1",
+    "value": 4448
+}, {
+    "source": "2号线_0",
+    "target": "11号线_1",
+    "value": 12303
+}, {
+    "source": "2号线_0",
+    "target": "12号线_1",
+    "value": 2729
+}, {
+    "source": "2号线_0",
+    "target": "1号线_1",
+    "value": 17149
+}, {
+    "source": "2号线_0",
+    "target": "2号线_1",
+    "value": 42530
+}, {
+    "source": "2号线_0",
+    "target": "3号线_1",
+    "value": 18542
+}, {
+    "source": "2号线_0",
+    "target": "4号线_1",
+    "value": 243
+}, {
+    "source": "2号线_0",
+    "target": "5号线_1",
+    "value": 809
+}, {
+    "source": "3号线_0",
+    "target": "10号线_1",
+    "value": 12584
+}, {
+    "source": "3号线_0",
+    "target": "11号线_1",
+    "value": 29640
+}, {
+    "source": "3号线_0",
+    "target": "12号线_1",
+    "value": 8920
+}, {
+    "source": "3号线_0",
+    "target": "1号线_1",
+    "value": 17301
+}, {
+    "source": "3号线_0",
+    "target": "2号线_1",
+    "value": 18493
+}, {
+    "source": "3号线_0",
+    "target": "3号线_1",
+    "value": 89351
+}, {
+    "source": "3号线_0",
+    "target": "4号线_1",
+    "value": 1231
+}, {
+    "source": "3号线_0",
+    "target": "5号线_1",
+    "value": 2705
+}, {
+    "source": "4号线_0",
+    "target": "10号线_1",
+    "value": 1235
+}, {
+    "source": "4号线_0",
+    "target": "11号线_1",
+    "value": 1421
+}, {
+    "source": "4号线_0",
+    "target": "12号线_1",
+    "value": 1205
+}, {
+    "source": "4号线_0",
+    "target": "1号线_1",
+    "value": 610
+}, {
+    "source": "4号线_0",
+    "target": "2号线_1",
+    "value": 267
+}, {
+    "source": "4号线_0",
+    "target": "3号线_1",
+    "value": 1188
+}, {
+    "source": "4号线_0",
+    "target": "4号线_1",
+    "value": 808
+}, {
+    "source": "4号线_0",
+    "target": "5号线_1",
+    "value": 246
+}, {
+    "source": "5号线_0",
+    "target": "10号线_1",
+    "value": 1190
+}, {
+    "source": "5号线_0",
+    "target": "11号线_1",
+    "value": 7142
+}, {
+    "source": "5号线_0",
+    "target": "12号线_1",
+    "value": 2187
+}, {
+    "source": "5号线_0",
+    "target": "1号线_1",
+    "value": 1399
+}, {
+    "source": "5号线_0",
+    "target": "2号线_1",
+    "value": 831
+}, {
+    "source": "5号线_0",
+    "target": "3号线_1",
+    "value": 2626
+}, {
+    "source": "5号线_0",
+    "target": "4号线_1",
+    "value": 237
+}, {
+    "source": "5号线_0",
+    "target": "5号线_1",
+    "value": 7481
+}]

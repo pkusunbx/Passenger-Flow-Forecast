@@ -1,16 +1,23 @@
 import json
+import os
+
 import pandas as pd
 import datetime as dt
 
-path = 'init_data/clean_data.csv'
-trips = pd.read_csv(path, encoding='gbk')  # 读取
-user = pd.read_csv('init_data/users.csv', encoding='gbk')
+path = ''
+for root, dirs, files in os.walk('a9'):
+    if len(files) > 0:
+        path = 'init_data/'
+    else:
+        path = 'http://114.55.125.234:1111/init_data/'
+trips = pd.read_csv(os.path.join(path, 'clean_data.csv'), encoding='gbk')  # 读取
+user = pd.read_csv(os.path.join(path, 'users.csv'), encoding='gbk')
 
-days = pd.read_csv('init_data/workdays2020.csv', encoding='gbk')
+days = pd.read_csv(os.path.join(path, 'workdays2020.csv'), encoding='gbk')
 days.columns = ['date', 'type']
 days['date'] = pd.to_datetime(days['date'], format='%Y%m%d')
 
-station_path = 'init_data/test_station.csv'
+station_path = os.path.join(path, 'test_station.csv')
 station = pd.read_csv(station_path, encoding='gbk')
 
 
@@ -196,17 +203,17 @@ def station_group():
     return station_list  # 返回线路表
 
 
-# print(count_bymonth())  # 单月统计
-# print(weekdays_or_weekends_flow())  # 工作日和周末
-#
-# print(inflow_allyear())  # 入站top10
-# print(outflow_allyear())  # 出站top10
-#
-# print(old())  # 年龄结构2
-# print(peak_flow())  # 早晚高峰
-# print(_od())  # od客流
-#
-# print(line_section_flow())
+print(count_bymonth())  # 单月统计
+print(weekdays_or_weekends_flow())  # 工作日和周末
 
-# print(line_group())
-# print(station_group())
+print(inflow_allyear())  # 入站top10
+print(outflow_allyear())  # 出站top10
+
+print(old())  # 年龄结构2
+print(peak_flow())  # 早晚高峰
+print(_od())  # od客流
+
+print(line_section_flow())
+
+print(line_group())
+print(station_group())

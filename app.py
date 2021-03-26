@@ -10,14 +10,6 @@ app.jinja_env.trim_blocks = True
 app.jinja_env.lstrip_blocks = True
 
 
-def test_station():
-    return '1'
-
-
-def test_route():
-    return '2'
-
-
 def pre_station(date, station):
     pre = MyModel(date=date, text_day=120, station=station, all=True)
     return pre.pre_station()

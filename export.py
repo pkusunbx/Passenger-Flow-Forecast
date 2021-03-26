@@ -14,7 +14,12 @@ from sklearn.tree import DecisionTreeRegressor
 from xgboost import XGBRegressor
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-path = 'a9/'  # csv文件所在目录
+path = ''  # csv文件所在目录
+for root, dirs, files in os.walk('a9'):
+    if len(files) > 0:
+        path = 'a9/'
+    else:
+        path = 'http://114.55.125.234:1111/a9/'
 
 dic = {
     '晴': 0,
@@ -47,7 +52,7 @@ class MyModel(object):
             self.end = datetime.datetime.strptime(date, '%Y-%m-%d').strftime('%Y-%m-%d')
             self.true_end = self.end
             self.begin = (
-                        datetime.datetime.strptime(date, '%Y-%m-%d') - datetime.timedelta(days=text_day + 10)).strftime(
+                    datetime.datetime.strptime(date, '%Y-%m-%d') - datetime.timedelta(days=text_day + 10)).strftime(
                 '%Y-%m-%d')
         self.data.set_index('进站时间', inplace=True, drop=True)
         self.data.index = pd.DatetimeIndex(self.data.index)
@@ -349,6 +354,7 @@ class MyModel(object):
 
 
 if __name__ == '__main__':
+    print('Hello')
     # 控制显示， 生产环境无关
     pd.set_option('display.max_columns', None)  # 显示完整的列
     pd.set_option('display.max_rows', None)  # 显示完整的行
