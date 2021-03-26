@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轨道交通智慧客流分析预测</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .row {
+            width: 1536px;
+        }
+
+        .row .item {
+            float: left;
+            width: 33%;
+            height: 300px;
+        }
+    </style>
+{#    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">#}
+</head>
+
+<body>
+<div class="row">
+    <div class="item">
+        <div id="bar" style="height: 100%"></div>
+    </div>
+    <div class="item">
+        <div id="age" style="height: 100%"></div>
+    </div>
+    <div class="item">
+
+    </div>
+</div>
+<select id="change">
+    <option value="原始">原始</option>
+    <option value="新值">新值</option>
+</select>
+<div>
+    <input type="date" class="form-control" id="predict_time" required="required" title="选择时间">
+    <select class="form-control" required="required" id="station">
+        <option value="Sta1">Sta1</option>
+    </select>
+    <select class="form-control" required="required" id="route">
+        <option value="Sta1">1号线</option>
+    </select>
+    <span id="station_data">0</span>
+    <span id="route_data">0</span>
+    <button id="predict_station_button">预测站点</button>
+    <button id="predict_route_button">预测线路</button>
+</div>
+<div class="row">
+    <div class="item">
+        <div id="single" style="height: 150%; width: 300%;"></div>
+    </div>
+</div>
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script type="text/javascript">
+    station = document.getElementById('station')
+    station.innerHTML = ''
+    $.getJSON('/static/data/station_list.json', function (data) {
+        for (let i in data) {
+            station.innerHTML += '<option value="' + data[i] + '">' + data[i] + '</option>'
+        }
+    })
+    route = document.getElementById('route')
+    route.innerHTML = ''
+    $.getJSON('/static/data/route_list.json', function (data) {
+        for (let i in data) {
+            route.innerHTML += '<option value="' + data[i] + '">' + data[i] + '</option>'
+        }
+    })
+    predict_station_button = document.getElementById('predict_station_button')
+    predict_station_button.onclick = function () {
+        time_value = document.getElementById('predict_time').value
+        station_value = document.getElementById('station').value
+        $.ajax({
+            url: '/predict/station/' + time_value + '/' + station_value
+        }).done(function (data) {
+            console.log(data)
+            predict_data = document.getElementById('station_data')
+            predict_data.innerHTML = data
+        })
+    }
+    predict_route_button = document.getElementById('predict_route_button')
+    predict_route_button.onclick = function () {
+        time_value = document.getElementById('predict_time').value
+        route_value = document.getElementById('route').value
+        $.ajax({
+            url: '/predict/route/' + time_value + '/' + route_value
+        }).done(function (data) {
+            predict_data = document.getElementById('route_data')
+            predict_data.innerHTML = data
+        })
+    }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<script type="text/javascript">
+    var dom = document.getElementById("bar");
+    var bar = echarts.init(dom);
+    var app = {};
+
+    var option;
+
+
+    option = {
+        title: {
+            text: '单月客流',
+            left: 'center'
+        },
+        xAxis: {
+            type: 'category',
+            // data: ['2020-1', '2020-2', '2020-3', '2020-4', '2020-5', '2020-6', '2020-7'],
+            axisLabel: {
+                fontSize: 10
+            }
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            // data: [88318, 5738, 53162, 124022, 169320, 187495, 95677],
+            type: 'line',
+            smooth: true,
+            showBackground: true,
+            backgroundStyle: {
+                color: 'rgba(180, 180, 180, 0.2)'
+            }
+        }],
+        tooltip: {
+            show: true
+        },
+        grid: {
+            left: 100
+        }
+    };
+    $.ajax({
+        url: "{{url_for('static', filename='data/a.json')}}",
+        dataType: 'json',
+        cache: false
+    }).done(function (data) {
+        bar.setOption({
+            xAxis: {
+                data: data.date
+            },
+            series: [{
+                data: data.counts
+            }]
+        })
+    })
+
+    if (option && typeof option === 'object') {
+        bar.setOption(option);
+    }
+
+</script>
+<script type="text/javascript">
+    var dom = document.getElementById("age");
+    var age = echarts.init(dom);
+    var app = {};
+
+    var option;
+
+
+    option = {
+        title: {
+            text: '用户年龄结构分布',
+            left: 'center'
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: '{b}<br/>人数：{c}<br/>占比：{d}%'
+        },
+        label: {
+            show: true,
+            formatter: '{b} ({d}%)'
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left',
+        },
+        series: [
+            {
+                name: '用户年龄结构分布',
+                type: 'pie',
+                radius: ['20%', '50%'],
+                // data: [
+                //     { value: 3113, name: '20岁以下' },
+                //     { value: 60882, name: '20~30岁' },
+                //     { value: 34858, name: '30~40岁' },
+                //     { value: 24718, name: '40~60岁' },
+                //     { value: 1211, name: '60岁以上' }
+                // ],
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+    $.ajax({
+        url: '{{ url_for('static', filename='data/d.json') }}',
+        dataType: 'json'
+    }).done(function (data) {
+        console.log(data)
+        let chart_data = []
+        for (item in data) {
+            console.log(item)
+            chart_data.push({
+                'name': item,
+                'value': data[item]
+            })
+        }
+        age.setOption({
+            series: {
+                data: chart_data
+            }
+        })
+    })
+
+    if (option && typeof option === 'object') {
+        age.setOption(option);
+    }
+
+</script>
+<script type="text/javascript">
+    var single = echarts.init(document.getElementById('single'))
+    option = {
+        title: {
+            text: "单站的点入站TOP10"
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {            // Use axis to trigger tooltip
+                type: 'shadow'        // 'shadow' as default; can also be 'line' or 'shadow'
+            }
+        },
+        legend: {
+            // data: ['2020.1', '2020.2', '2020.3', '2020.4', '2020.5', '2020.6', '2020.7'],
+            show: true
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'value'
+        },
+        yAxis: {
+            type: 'category'
+            // data: ['Sta107', 'Sta20', 'Sta129', 'Sta30', 'Sta108', 'Sta134', 'Sta115', 'Sta89', 'Sta63', 'Sta126']
+        },
+        animationEasing: 'elasticOut',
+        animationDelayUpdate: function (idx) {
+            return idx * 100;
+        }
+    };
+    $.ajax({
+        url: '{{ url_for('static', filename='data/c_in.json') }}',
+        dataType: 'json',
+        cache: 'json'
+    }).done(function (data) {
+        console.log(data)
+        station_data = data[0]
+        legend_data = []
+        series_data = []
+        for (let key in data[0]) {
+            legend_data.push(key)
+        }
+        for (key in data[1]) {
+            series_data.push({
+                name: key,
+                type: 'bar',
+                stack: 'total',
+                label: {
+                    show: true
+                },
+                emphasis: {
+                    focus: 'series'
+                },
+                data: data[1][key],
+                animationDelay: function (idx) {
+                    return idx * 300;
+                }
+            })
+        }
+        single.setOption({
+            legend: {
+                data: legend_data
+            },
+            yAxis: {
+                data: station_data
+            },
+            series: series_data
+        })
+    })
+    if (option && typeof option === 'object') {
+        single.setOption(option);
+    }
+</script>
+<script type="text/javascript">
+    change_node = document.getElementById('change')
+    var single = echarts.init(document.getElementById('single'))
+    change_node.onchange = function () {
+        $.ajax({
+            url: '{{ url_for('static', filename='data/c_in_copy.json') }}',
+            dataType: 'json',
+            cache: 'json'
+        }).done(function (data) {
+            console.log(data)
+            station_data = data[0]
+            legend_data = []
+            series_data = []
+            for (let key in data[0]) {
+                legend_data.push(key)
+            }
+            for (key in data[1]) {
+                series_data.push({
+                    name: key,
+                    type: 'bar',
+                    stack: 'total',
+                    label: {
+                        show: true
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: data[1][key],
+                    animationDelay: function (idx) {
+                        return idx * 300;
+                    }
+                })
+            }
+            single.setOption({
+                legend: {
+                    data: legend_data
+                },
+                yAxis: {
+                    data: station_data
+                },
+                series: series_data
+            })
+        })
+    }
+</script>
+</body>
+
+</html>

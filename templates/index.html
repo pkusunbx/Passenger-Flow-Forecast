@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>数据可视化</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"/>
+</head>
+<body>
+<!-- 头部的盒子 -->
+<header>
+    <h1>轨道交通智慧客流分析预测</h1>
+    <div class="showTime"></div>
+    <script>
+        var t = null;
+        t = setTimeout(time, 1000); //開始运行
+        function time() {
+            clearTimeout(t); //清除定时器
+            dt = new Date();
+            var y = dt.getFullYear();
+            var mt = dt.getMonth() + 1;
+            var day = dt.getDate();
+            var h = dt.getHours(); //获取时
+            var m = dt.getMinutes(); //获取分
+            var s = dt.getSeconds(); //获取秒
+            document.querySelector(".showTime").innerHTML =
+                "当前时间：" +
+                y +
+                "年" +
+                mt +
+                "月" +
+                day +
+                "-" +
+                h +
+                "时" +
+                m +
+                "分" +
+                s +
+                "秒";
+            t = setTimeout(time, 1000); //设定定时器，循环运行
+        }
+    </script>
+</header>
+
+<!-- 页面主体部分 -->
+<div class="mainbox">
+
+    <div class="column">
+        <div class="panel bar">
+            <h2>单月整体的客流波动分析</h2>
+            <div class="chart"></div>
+            <div class="panel-footer"></div>
+        </div>
+
+        <div class="panel line">
+            <h2>
+                早晚高峰客流站点分布分析
+                <button id='btn13'>1-3月
+                </button>
+                <button id='btn47'>4-7月
+                </button>
+            </h2>
+            <div class="chart"></div>
+            <div class="panel-footer"></div>
+        </div>
+
+        <div class="panel pie">
+            <h2>用户年龄结构分析</h2>
+            <div class="chart"></div>
+            <div class="panel-footer"></div>
+        </div>
+
+    </div>
+
+    <div class="column">
+        <!-- no模块制作 -->
+        <div class="no">
+            <div class="no-hd">
+                <ul>
+                    <li id="station_data">000000</li>
+                    <li id="route_data">000000</li>
+                </ul>
+            </div>
+
+            <div class="no-bd">
+                <ul>
+                    <li>当前站点当天预测的客流量为</li>
+                    <li>当前线路当天预测的客流量为</li>
+                </ul>
+            </div>
+            <div>
+                <input type="date" class="form-control" id="predict_time" required="required" title="选择时间">
+                <select class="form-control" required="required" id="station">
+                    <option value="Sta1">Sta1</option>
+                </select>
+                <select class="form-control" required="required" id="route">
+                    <option value="Sta1">1号线</option>
+                </select>
+                <button id="predict_station_button">预测站点</button>
+                <button id="predict_route_button">预测线路</button>
+
+            </div>
+        </div>
+        <!-- 地图模块 -->
+        <div class="map">
+            <div class="map1"></div>
+            <div class="map2"></div>
+            <div class="map3"></div>
+            <div class="chart"></div>
+            <div class="panel-footer"></div>
+        </div>
+
+    </div>
+
+    <div class="column">
+
+        <div class="panel bar2">
+            <h2>工作日和周末的客流分析</h2>
+            <div class="chart"></div>
+            <div class="panel-footer"></div>
+        </div>
+
+        <div class="panel line2">
+            <h2>
+                断面客流分析
+                <select id="select">
+                    <option value="1">1号线</option>
+                    <option value="2">2号线</option>
+                    <option value="3">3号线</option>
+                    <option value="4">4号线</option>
+                    <option value="5">5号线</option>
+                    <option value="6">10号线</option>
+                    <option value="7">11号线</option>
+                    <option value="8">12号线</option>
+                </select>
+            </h2>
+            <div class="chart"></div>
+            <div class="panel-footer"></div>
+        </div>
+
+        <div class="panel pie2">
+            <h2>od客流分析</h2>
+            <div class="chart"></div>
+            <div class="panel-footer"></div>
+        </div>
+
+    </div>
+
+</div>
+<div class="box">
+    <div class="panel bar3">
+        <h2>单站的点入站TOP10</h2>
+        <div class="chart"></div>
+        <div class="panel-footer"></div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/flexible.js') }}"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<!-- 先引入jquery -->
+<script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+<!-- 必须先引入china.js 这个文件 因为中国地图需要 -->
+<!-- <script src="js/china.js"></script>
+<script src="js/index.js"></script> -->
+<script type="text/javascript">
+    station = document.getElementById('station')
+    station.innerHTML = ''
+    $.getJSON('/static/data/station_list.json', function (data) {
+        for (let i in data) {
+            station.innerHTML += '<option value="' + data[i] + '">' + data[i] + '</option>'
+        }
+    })
+    route = document.getElementById('route')
+    route.innerHTML = ''
+    $.getJSON('/static/data/route_list.json', function (data) {
+        for (let i in data) {
+            route.innerHTML += '<option value="' + data[i] + '">' + data[i] + '</option>'
+        }
+    })
+    predict_station_button = document.getElementById('predict_station_button')
+    predict_station_button.onclick = function () {
+        time_value = document.getElementById('predict_time').value
+        station_value = document.getElementById('station').value
+        $.ajax({
+            url: '/predict/station/' + time_value + '/' + station_value
+        }).done(function (data) {
+            console.log(data)
+            predict_data = document.getElementById('station_data')
+            predict_data.innerHTML = data
+        })
+    }
+    predict_route_button = document.getElementById('predict_route_button')
+    predict_route_button.onclick = function () {
+        time_value = document.getElementById('predict_time').value
+        route_value = document.getElementById('route').value
+        $.ajax({
+            url: '/predict/route/' + time_value + '/' + route_value
+        }).done(function (data) {
+            predict_data = document.getElementById('route_data')
+            predict_data.innerHTML = data
+        })
+    }
+</script>
+<script>
+    var full = [false, false, false, false, false, false];
+</script>
+<!-- 单月整体的客流波动分析 -->
+<script type="text/javascript">
+    var dom = document.querySelector(".bar .chart");
+    var bar = echarts.init(dom);
+    var app = {};
+
+    var option;
+
+
+    // Generate data
+    var category = [];
+    var lineData = [];
+    var barData = [];
+
+    // option
+    option = {
+        title: {
+            // text: "单月整体的客流波动分析",
+            // x:'center',
+            // y:'top',
+            // padding:15,
+            // textStyle: {
+            //     color: '#ccc'
+            // }
+            show: false
+        },
+        // backgroundColor: 'rgb(16, 12, 42)',
+        grid: {
+            left: "0%",
+            top: "10%",
+            right: "0%",
+            bottom: "0%",
+            containLabel: true
+        },
+        tooltip: {
+            backgroundColor: '#222',
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            },
+            formatter: '{b}' + '</br>' + '客流量:' + '{c}',
+            textStyle: {
+                color: '#ccc'
+            },
+        },
+        legend: {
+            seletorLabel: {
+                borderColor: "#43f"
+            },
+            //color:'#5c7bd9',
+            x: 'right',
+            data: ['单月客流量'],
+            textStyle: {
+                color: '#ccc'
+            }
+        },
+        xAxis: {
+            data: category,
+            axisLine: {
+                lineStyle: {
+                    color: '#ccc'
+                }
+            }
+        },
+        yAxis: {
+            splitLine: {show: false},
+            axisLine: {
+                lineStyle: {
+                    color: '#ccc'
+                }
+            }
+        },
+        series: [{
+            name: '单月客流量',
+            type: 'line',
+            smooth: true,
+            showAllSymbol: true,
+            symbol: 'emptyCircle',
+            symbolSize: 15,
+            lineStyle: {
+                color: '#5470c6',
+            },
+            data: lineData
+        }, {
+            name: 'bar',
+            type: 'bar',
+            barWidth: 10,
+            itemStyle: {
+                barBorderRadius: 5,
+                color: new echarts.graphic.LinearGradient(
+                    0, 0, 0, 1,
+                    [
+                        {offset: 0, color: '#14c8d4'},
+                        {offset: 1, color: '#43eec6'}
+                    ]
+                )
+            },
+            data: barData
+        }, {
+            name: 'line',
+            type: 'bar',
+            barGap: '-100%',
+            barWidth: 10,
+            itemStyle: {
+                color: new echarts.graphic.LinearGradient(
+                    0, 0, 0, 1,
+                    [
+                        {offset: 0, color: 'rgba(20,200,212,0.5)'},
+                        {offset: 0.2, color: 'rgba(20,200,212,0.2)'},
+                        {offset: 1, color: 'rgba(20,200,212,0)'}
+                    ]
+                )
+            },
+            z: -12,
+            data: lineData
+        }, {
+            name: 'dotted',
+            type: 'pictorialBar',
+            symbol: 'rect',
+            itemStyle: {
+                color: '#0f375f'
+            },
+            symbolRepeat: true,
+            symbolSize: [12, 4],
+            symbolMargin: 1,
+            z: -10,
+            data: lineData
+        }]
+    };
+    $.ajax({
+        url: 'static/data/a.json',
+        dataType: 'json'
+    }).done(function (data) {
+        category = data['date']
+        lineData = data['counts']
+        for (let i = 0; i < lineData.length; ++i) {
+            barData.push(lineData[i] * 0.9)
+        }
+        bar.setOption({
+            xAxis: {
+                data: category,
+            },
+            series: [{
+                data: lineData
+            }, {
+                data: barData
+            }, {
+                data: lineData
+            }, {
+                data: lineData
+            }
+            ]
+        })
+    })
+
+    if (option && typeof option === 'object') {
+        bar.setOption(option);
+    }
+
+</script>
+
+<!-- 工作日和周末的客流分析 -->
+<script type="text/javascript">
+    var workday = echarts.init(document.querySelector(".bar2 .chart"));
+    var option = {
+        color: ['#516cc0', '#18cbd3'],
+        // backgroundColor: 'rgb(16, 12, 42)',
+        title: {
+            // textStyle: {
+            //     color: '#fff'
+            // },
+            // text: '工作日和周末的客流分析'
+            show: false
+        },
+        tooltip: {
+            backgroundColor: '#222',
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            },
+            formatter: '{b}' + '</br>' + '工作日平均客流量:' + '{c0}' + '</br>' + '周末平均客流量:' + '{c1}',
+            textStyle: {
+                color: '#ccc'
+            },
+        },
+        legend: {
+            x: 'right',
+            data: ['工作日', '周末'],
+            textStyle: {
+                color: '#ccc'
+            }
+        },
+        grid: {
+            top: "20%",
+            left: "12%",
+            bottom: "10%"
+            // containLabel: true
+        },
+        yAxis: {
+            axisLine: {
+                lineStyle: {
+                    color: '#ccc'
+                }
+            },
+            type: 'value',
+            boundaryGap: [0, 0.01]
+        },
+        xAxis: {
+            axisLine: {
+                lineStyle: {
+                    color: '#ccc'
+                }
+            },
+            type: 'category',
+            data: ['2020-1', '2020-2', '2020-3', '2020-4', '2020-5', '2020-6', '2020-7']
+        },
+        series: [{
+            name: '工作日',
+            type: 'bar',
+            data: [18203, 23489, 29034, 104970, 131744, 63023, 42313]
+        },
+            {
+                name: '周末',
+                type: 'bar',
+                data: [19325, 23438, 31000, 121594, 134141, 68180, 54334]
+            }
+        ]
+    };
+    $.ajax({
+        url: 'static/data/b.json',
+        dataType: 'json',
+        cache: false
+    }).done(function (data) {
+        workday.setOption({
+            series: [{
+                data: data.workday
+            },
+                {
+                    data: data.weekday
+                }
+            ]
+        })
+    })
+    if (option && typeof option === 'object') {
+        workday.setOption(option);
+    }
+</script>
+
+<!-- 用户年龄结构分析 -->
+<script type="text/javascript">
+    var dom = document.querySelector(".pie .chart");
+    var age = echarts.init(dom);
+    var app = {};
+
+    var option;
+
+
+    option = {
+        // backgroundColor: 'rgb(16, 12, 42)',
+        title: {
+            // textStyle: {
+            //     color: '#fff'
+            // },
+            // text: '用户年龄结构分析'
+            show: false
+        },
+
+        tooltip: {
+            backgroundColor: '#222',
+            trigger: 'item',
+            formatter: '{b}<br/>人数：{c}<br/>占比：{d}%'
+        },
+        label: {
+            show: true,
+            color: "#1089E7",//"rgba(255,255,255,.6)",
+            formatter: '{b} ({d}%)'
+        },
+        legend: {
+            textStyle: {
+                color: "#4c9bfd",
+                fontSize: "12"
+            },
+            x: 'center',
+            y: 'bottom',
+            // orient: 'vertical',
+            itemWidth: 10,
+            itemHeight: 10
+        },
+        series: [{
+            // color: ['#1482e5', '#70b4eb', '#18cbd3', '#070093', '#e1e1e1'],
+            color: [
+                "#006cff",
+                "#60cda0",
+                "#ed8884",
+                "#ff9f7f",
+                "#0096ff",
+                "#9fe6b8",
+                "#32c5e9",
+                "#1d9dff"
+            ],
+            name: '用户年龄结构分布',
+            type: 'pie',
+            radius: ['20%', '50%'],
+            // data: [
+            //     { value: 3113, name: '20岁以下' },
+            //     { value: 60882, name: '20~30岁' },
+            //     { value: 34858, name: '30~40岁' },
+            //     { value: 24718, name: '40~60岁' },
+            //     { value: 1211, name: '60岁以上' }
+            // ],
+            emphasis: {
+                itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }]
+    };
+    $.ajax({
+        url: 'static/data/d.json',
+        dataType: 'json'
+    }).done(function (data) {
+        console.log(data)
+        let chart_data = []
+        for (item in data) {
+            console.log(item)
+            chart_data.push({
+                'name': item,
+                'value': data[item]
+            })
+        }
+        age.setOption({
+            series: {
+                data: chart_data
+            }
+        })
+    })
+
+    if (option && typeof option === 'object') {
+        age.setOption(option);
+    }
+</script>
+
+<script type="text/javascript">
+    var single = echarts.init(document.querySelector(".bar3 .chart"))
+    option = {
+        // backgroundColor: 'rgb(16, 12, 42)',
+        color: ['#070093', '#1c3fbf', '#1482e5', '#70b4eb', '#b4e0f3', '#d0d4f9', '#e1e1e1'],
+        title: {
+            // textStyle: {
+            //     color: 'rgba(255,255,255)'
+            // },
+            // text: "单站的点入站TOP10"
+            show: false
+        },
+        legend: {
+            x: 'right',
+            textStyle: {
+                color: '#ccc'
+            },
+            //   data: ['2020.1', '2020.2', '2020.3', '2020.4', '2020.5', '2020.6', '2020.7']
+            //data: ['Direct', 'Mail Ad', 'Affiliate Ad', 'Video Ad', 'Search Engine']
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '10%',
+            containLabel: true
+        },
+        xAxis: {
+            axisLabel: {
+                color: 'rgba(255, 255, 255, 1)'
+            },
+            type: 'value'
+        },
+        yAxis: {
+            axisLabel: {
+                color: '#ccc'
+            },
+            type: 'category'
+            // data: ['Sta107', 'Sta20', 'Sta129', 'Sta30', 'Sta108', 'Sta134', 'Sta115', 'Sta89', 'Sta63', 'Sta126']
+        },
+        series: {
+            barWidth: 20
+        },
+        animationEasing: 'elasticOut',
+        animationDelayUpdate: function (idx) {
+            return idx * 100;
+        }
+    };
+    $.ajax({
+        url: 'static/data/c_in.json',
+        dataType: 'json',
+        cache: 'json'
+    }).done(function (data) {
+
+        console.log(data)
+        station_data = data[0]
+        legend_data = []
+        series_data = []
+
+        for (key in data[1]
+
+            ) {
+            legend_data.push(key)
+            series_data.push({
+                name: key,
+                type: 'bar',
+                stack: 'total',
+                label: {
+                    show: true
+                },
+                emphasis: {
+                    focus: 'series'
+                },
+                data: data[1][key],
+                label: {
+                    color: 'rgba(255,255,255,0.7)',
+                    show: true,
+                    position: 'top',
+                },
+                animationDelay: function (idx) {
+                    return idx * 300;
+                }
+            })
+        }
+        console.log("1111" + legend_data);
+        single.setOption({
+            legend: {
+                data: legend_data
+                // ['2020.1', '2020.2', '2020.3', '2020.4', '2020.5', '2020.6', '2020.7']
+            },
+            yAxis: {
+                data: station_data,
+                inverse: true
+            },
+            series: series_data
+        })
+    })
+    if (option && typeof option === 'object') {
+        single.setOption(option);
+    }
+</script>
+
+<script type="text/javascript">
+    var chartDom = document.querySelector(".line2 .chart");
+    var myChart = echarts.init(chartDom);
+    var in_data = []
+    var out_data = []
+    var x_data = []
+    var res
+    var line_name = ["1\u53f7\u7ebf", "2\u53f7\u7ebf", "3\u53f7\u7ebf", "4\u53f7\u7ebf", "5\u53f7\u7ebf", "10\u53f7\u7ebf", "11\u53f7\u7ebf", "12\u53f7\u7ebf"]
+    option = {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        legend: {
+            data: ['进站', '出站']
+        },
+        grid: {
+            top: '5%',
+            left: '3%',
+            right: '4%',
+            bottom: '0%',
+            containLabel: true
+        },
+        yAxis: [
+            {
+                type: 'value',
+                // splitLine:{
+                //     interval:100
+                // }
+            }
+        ],
+        xAxis: [
+            {
+                type: 'category',
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    rotate: -68
+                }
+                // data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            }
+        ],
+        series: [
+            {
+                name: '收入',
+                type: 'bar',
+                stack: '总量',
+                label: {
+                    show: false,
+                    // position: 'top'
+                },
+                emphasis: {
+                    focus: 'series'
+                },
+                // data: [320, 302, 341, 374, 390, 450, 420]
+            },
+            {
+                name: '支出',
+                type: 'bar',
+                stack: '总量',
+                label: {
+                    show: false,
+                    // position: 'bottom'
+                },
+                emphasis: {
+                    focus: 'series'
+                },
+                // data: [-120, -132, -101, -134, -190, -230, -210]
+            }
+        ]
+    };
+    $.ajax({
+        url: 'static/data/line_section.json',
+        dataType: 'json'
+    }).done(function (data) {
+        res = data
+        $('#select').trigger('change');
+    })
+
+    $('#select').on('change', function () {
+        var val = $(this).val()
+        console.log(line_name[val - 1])
+        x_data = res[line_name[val - 1]][0]
+        console.log(x_data)
+        in_data = res[line_name[val - 1]][1]
+        for (let i = 0; i < res[line_name[val - 1]][2].length; ++i) {
+            out_data.push(res[line_name[val - 1]][2][i] * -1)
+        }
+        console.log(out_data)
+        myChart.setOption({
+            xAxis: {
+                data: x_data,
+            },
+            series: [{
+                data: in_data
+            }, {
+                data: out_data
+            }
+            ]
+        })
+    });
+
+    if (option && typeof option === 'object') {
+        myChart.setOption(option);
+    }
+</script>
+
+<script type="text/javascript">
+    var mydom = document.querySelector(".pie2 .chart");
+    var mypie = echarts.init(mydom);
+    var app = {};
+
+    var option;
+
+    option = {
+        backgroundColor: 'rgb(16, 12, 42)',
+        color: ['#df33a5', '#f4b13d', '#1482e5', '#70b4eb', '#5de1d9', '#50beff', '#787cf1', '#b4e0f3'],
+        series: {
+            itemStyle: {
+                borderWidth: 1,
+            },
+            lineStyle: {
+
+                color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                    offset: 0,
+                    color: '#136bff'
+                }, {
+                    offset: 1,
+                    color: '#87ffd6'
+                }]),
+                curveness: 0.5,
+                opacity: 0.5
+            },
+            grid: {
+                top: '10%',
+                bottom: '0%'
+            },
+            type: 'sankey',
+            layout: 'none',
+            emphasis: {
+                focus: 'adjacency'
+            },
+            data: [],
+            links: []
+        },
+        dataZoom: [{
+            id: 'dataZoomX',
+            type: 'slider',
+            filterMode: 'filter'
+        },
+            {
+                id: 'dataZoomY',
+                type: 'slider',
+                filterMode: 'empty'
+            }
+        ],
+    };
+    $.ajax({
+        url: 'static/data/line-to-line_od.json',
+        dataType: 'json',
+        cache: false
+    }).done(function (data) {
+        let datas = []
+        let series_data = []
+        let series_links = []
+        for (let item in data) {
+            if (datas.indexOf(data[item]['source']) == -1) {
+                datas.push(data[item]['source'])
+            }
+            if (datas.indexOf(data[item]['target']) == -1) {
+                datas.push(data[item]['target'])
+            }
+            series_links.push({
+                source: data[item]['source'],
+                target: data[item]['target'],
+                value: data[item]['value']
+            })
+        }
+        for (let i in datas) {
+            series_data.push({
+                name: datas[i]
+            })
+        }
+        console.log(series_data)
+        console.log(data)
+        mypie.setOption({
+            series: {
+                data: series_data,
+                links: series_links
+            }
+        })
+    })
+
+    if (option && typeof option === 'object') {
+        mypie.setOption(option);
+    }
+
+</script>
+
+<script type="text/javascript">
+    var peak = echarts.init(document.querySelector(".line .chart"))
+    var option;
+    // option
+    var xAxisData = [];
+    var data1 = [];
+    var data2 = [];
+
+    option = {
+        backgroundColor: 'rgb(16, 12, 42)',
+        grid: {
+            top: '12%',
+            bottom: '10%'
+        },
+        legend: {
+            x: 'center',
+            data: ['早高峰（7点-9点）', '晚高峰（17点-19点）'],
+            textStyle: {
+                color: '#ccc'
+            }
+        },
+
+        tooltip: {
+            backgroundColor: '#222',
+
+            textStyle: {
+                color: '#ccc'
+            },
+        },
+        xAxis: {
+            data: xAxisData,
+            splitLine: {
+                show: false
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#ccc'
+                }
+            }
+        },
+        yAxis: {
+            axisLine: {
+                lineStyle: {
+                    color: '#ccc'
+                }
+            }
+        },
+        series: [{
+            name: '早高峰（7点-9点）',
+            type: 'bar',
+            data: data1,
+            emphasis: {
+                focus: 'series'
+            },
+            animationDelay: function (idx) {
+                return idx * 10;
+            }
+        }, {
+            name: '晚高峰（17点-19点）',
+            type: 'bar',
+            data: data2,
+            emphasis: {
+                focus: 'series'
+            },
+            animationDelay: function (idx) {
+                return idx * 10 + 100;
+            }
+        }],
+        animationEasing: 'elasticOut',
+        animationDelayUpdate: function (idx) {
+            return idx * 5;
+        }
+    };
+    $.ajax({
+        url: 'static/data/ear_peak.json',
+        dataType: 'json'
+    }).done(function (data) {
+        for (var i = 0; data[i].date != "2020-4-1"; i++) {
+            xAxisData.push(data[i].date);
+            data1.push(data[i].early);
+            data2.push(data[i].evening);
+        }
+
+        peak.setOption({
+            xAxis: {
+                data: xAxisData
+            },
+            series: [{
+                data: data1
+            }, {
+                data: data2
+            }]
+        })
+    })
+    $('#btn13').click(function () {
+        $.ajax({
+            url: 'static/data/ear_peak.json',
+            dataType: 'json'
+        }).done(function (data) {
+            xAxisData = [];
+            data1 = [];
+            data2 = [];
+            for (var i = 0; data[i].date != "2020-4-1"; i++) {
+                xAxisData.push(data[i].date);
+                data1.push(data[i].early);
+                data2.push(data[i].evening);
+            }
+
+            peak.setOption({
+                xAxis: {
+                    data: xAxisData
+                },
+                series: [{
+                    data: data1
+                }, {
+                    data: data2
+                }]
+            })
+        })
+    })
+    $('#btn47').click(function () {
+        $.ajax({
+            url: 'static/data/ear_peak.json',
+            dataType: 'json'
+        }).done(function (data) {
+            xAxisData = [];
+            data1 = [];
+            data2 = [];
+            for (var i = 91; i < data.length; i++) {
+                xAxisData.push(data[i].date);
+                data1.push(data[i].early);
+                data2.push(data[i].evening);
+            }
+            peak.setOption({
+                xAxis: {
+                    data: xAxisData
+                },
+                series: [{
+                    data: data1
+                }, {
+                    data: data2
+                }]
+            })
+        })
+    })
+
+    if (option && typeof option === 'object') {
+        peak.setOption(option);
+    }
+</script>
+</html>
