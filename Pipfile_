@@ -1,0 +1,12 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.doubanio.com/simple"
+verify_ssl = false
+
+[packages]
+
+[dev-packages]
+black = "*"
+
+[requires]
+python_version = "3.8"

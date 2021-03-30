@@ -1,0 +1,1178 @@
+[
+    {
+        "district": "Dist1",
+        "id": "1004",
+        "line_name": "1号线",
+        "sequence": "20",
+        "station_name": "Sta1"
+    },
+    {
+        "district": "Dist1",
+        "id": "1006",
+        "line_name": "1号线",
+        "sequence": "19",
+        "station_name": "Sta159"
+    },
+    {
+        "district": "Dist1",
+        "id": "1008",
+        "line_name": "1号线",
+        "sequence": "18",
+        "station_name": "Sta108"
+    },
+    {
+        "district": "Dist2",
+        "id": "1009",
+        "line_name": "1号线",
+        "sequence": "17",
+        "station_name": "Sta83"
+    },
+    {
+        "district": "Dist2",
+        "id": "1010",
+        "line_name": "1号线",
+        "sequence": "16",
+        "station_name": "Sta107"
+    },
+    {
+        "district": "Dist3",
+        "id": "1011",
+        "line_name": "1号线",
+        "sequence": "15",
+        "station_name": "Sta154"
+    },
+    {
+        "district": "Dist3",
+        "id": "1012",
+        "line_name": "1号线",
+        "sequence": "14",
+        "station_name": "Sta150"
+    },
+    {
+        "district": "Dist3",
+        "id": "1013",
+        "line_name": "1号线",
+        "sequence": "13",
+        "station_name": "Sta64"
+    },
+    {
+        "district": "Dist3",
+        "id": "1014",
+        "line_name": "1号线",
+        "sequence": "12",
+        "station_name": "Sta89"
+    },
+    {
+        "district": "Dist3",
+        "id": "1015",
+        "line_name": "1号线",
+        "sequence": "11",
+        "station_name": "Sta80"
+    },
+    {
+        "district": "Dist3",
+        "id": "1016",
+        "line_name": "1号线",
+        "sequence": "10",
+        "station_name": "Sta97"
+    },
+    {
+        "district": "Dist3",
+        "id": "1017",
+        "line_name": "1号线",
+        "sequence": "9",
+        "station_name": "Sta110"
+    },
+    {
+        "district": "Dist3",
+        "id": "1018",
+        "line_name": "1号线",
+        "sequence": "8",
+        "station_name": "Sta106"
+    },
+    {
+        "district": "Dist3",
+        "id": "1019",
+        "line_name": "1号线",
+        "sequence": "7",
+        "station_name": "Sta34"
+    },
+    {
+        "district": "Dist3",
+        "id": "1020",
+        "line_name": "1号线",
+        "sequence": "6",
+        "station_name": "Sta128"
+    },
+    {
+        "district": "Dist3",
+        "id": "1021",
+        "line_name": "1号线",
+        "sequence": "5",
+        "station_name": "Sta74"
+    },
+    {
+        "district": "Dist3",
+        "id": "1022",
+        "line_name": "1号线",
+        "sequence": "4",
+        "station_name": "Sta149"
+    },
+    {
+        "district": "Dist3",
+        "id": "1023",
+        "line_name": "1号线",
+        "sequence": "3",
+        "station_name": "Sta49"
+    },
+    {
+        "district": "Dist3",
+        "id": "1024",
+        "line_name": "1号线",
+        "sequence": "2",
+        "station_name": "Sta65"
+    },
+    {
+        "district": "Dist1",
+        "id": "1025",
+        "line_name": "2号线",
+        "sequence": "22",
+        "station_name": "Sta9"
+    },
+    {
+        "district": "Dist1",
+        "id": "1026",
+        "line_name": "2号线",
+        "sequence": "21",
+        "station_name": "Sta163"
+    },
+    {
+        "district": "Dist1",
+        "id": "1027",
+        "line_name": "2号线",
+        "sequence": "20",
+        "station_name": "Sta53"
+    },
+    {
+        "district": "Dist1",
+        "id": "1028",
+        "line_name": "2号线",
+        "sequence": "19",
+        "station_name": "Sta78"
+    },
+    {
+        "district": "Dist1",
+        "id": "1030",
+        "line_name": "2号线",
+        "sequence": "18",
+        "station_name": "Sta79"
+    },
+    {
+        "district": "Dist1",
+        "id": "1031",
+        "line_name": "2号线",
+        "sequence": "17",
+        "station_name": "Sta18"
+    },
+    {
+        "district": "Dist2",
+        "id": "1032",
+        "line_name": "2号线",
+        "sequence": "15",
+        "station_name": "Sta123"
+    },
+    {
+        "district": "Dist2",
+        "id": "1033",
+        "line_name": "2号线",
+        "sequence": "14",
+        "station_name": "Sta127"
+    },
+    {
+        "district": "Dist2",
+        "id": "1034",
+        "line_name": "2号线",
+        "sequence": "13",
+        "station_name": "Sta81"
+    },
+    {
+        "district": "Dist2",
+        "id": "1035",
+        "line_name": "2号线",
+        "sequence": "12",
+        "station_name": "Sta27"
+    },
+    {
+        "district": "Dist2",
+        "id": "1036",
+        "line_name": "2号线",
+        "sequence": "11",
+        "station_name": "Sta48"
+    },
+    {
+        "district": "Dist2",
+        "id": "1037",
+        "line_name": "2号线",
+        "sequence": "10",
+        "station_name": "Sta151"
+    },
+    {
+        "district": "Dist4",
+        "id": "1038",
+        "line_name": "2号线",
+        "sequence": "9",
+        "station_name": "Sta68"
+    },
+    {
+        "district": "Dist4",
+        "id": "1039",
+        "line_name": "2号线",
+        "sequence": "8",
+        "station_name": "Sta52"
+    },
+    {
+        "district": "Dist4",
+        "id": "1040",
+        "line_name": "2号线",
+        "sequence": "7",
+        "station_name": "Sta76"
+    },
+    {
+        "district": "Dist4",
+        "id": "1041",
+        "line_name": "2号线",
+        "sequence": "6",
+        "station_name": "Sta57"
+    },
+    {
+        "district": "Dist4",
+        "id": "1042",
+        "line_name": "2号线",
+        "sequence": "5",
+        "station_name": "Sta71"
+    },
+    {
+        "district": "Dist5",
+        "id": "1043",
+        "line_name": "2号线",
+        "sequence": "4",
+        "station_name": "Sta139"
+    },
+    {
+        "district": "Dist6",
+        "id": "1044",
+        "line_name": "2号线",
+        "sequence": "3",
+        "station_name": "Sta24"
+    },
+    {
+        "district": "Dist4",
+        "id": "1045",
+        "line_name": "2号线",
+        "sequence": "2",
+        "station_name": "Sta105"
+    },
+    {
+        "district": "Dist7",
+        "id": "1046",
+        "line_name": "2号线",
+        "sequence": "1",
+        "station_name": "Sta51"
+    },
+    {
+        "district": "Dist7",
+        "id": "1048",
+        "line_name": "3号线",
+        "sequence": "2",
+        "station_name": "Sta143"
+    },
+    {
+        "district": "Dist7",
+        "id": "1049",
+        "line_name": "3号线",
+        "sequence": "3",
+        "station_name": "Sta156"
+    },
+    {
+        "district": "Dist7",
+        "id": "1050",
+        "line_name": "3号线",
+        "sequence": "4",
+        "station_name": "Sta61"
+    },
+    {
+        "district": "Dist7",
+        "id": "1051",
+        "line_name": "3号线",
+        "sequence": "5",
+        "station_name": "Sta50"
+    },
+    {
+        "district": "Dist7",
+        "id": "1052",
+        "line_name": "3号线",
+        "sequence": "6",
+        "station_name": "Sta119"
+    },
+    {
+        "district": "Dist7",
+        "id": "1053",
+        "line_name": "3号线",
+        "sequence": "7",
+        "station_name": "Sta66"
+    },
+    {
+        "district": "Dist7",
+        "id": "1054",
+        "line_name": "3号线",
+        "sequence": "8",
+        "station_name": "Sta12"
+    },
+    {
+        "district": "Dist7",
+        "id": "1055",
+        "line_name": "3号线",
+        "sequence": "9",
+        "station_name": "Sta161"
+    },
+    {
+        "district": "Dist7",
+        "id": "1056",
+        "line_name": "3号线",
+        "sequence": "10",
+        "station_name": "Sta21"
+    },
+    {
+        "district": "Dist6",
+        "id": "1057",
+        "line_name": "3号线",
+        "sequence": "11",
+        "station_name": "Sta133"
+    },
+    {
+        "district": "Dist6",
+        "id": "1058",
+        "line_name": "3号线",
+        "sequence": "12",
+        "station_name": "Sta22"
+    },
+    {
+        "district": "Dist6",
+        "id": "1059",
+        "line_name": "3号线",
+        "sequence": "13",
+        "station_name": "Sta138"
+    },
+    {
+        "district": "Dist6",
+        "id": "1060",
+        "line_name": "3号线",
+        "sequence": "14",
+        "station_name": "Sta41"
+    },
+    {
+        "district": "Dist6",
+        "id": "1061",
+        "line_name": "3号线",
+        "sequence": "15",
+        "station_name": "Sta30"
+    },
+    {
+        "district": "Dist6",
+        "id": "1062",
+        "line_name": "3号线",
+        "sequence": "16",
+        "station_name": "Sta67"
+    },
+    {
+        "district": "Dist6",
+        "id": "1063",
+        "line_name": "3号线",
+        "sequence": "17",
+        "station_name": "Sta144"
+    },
+    {
+        "district": "Dist8",
+        "id": "1064",
+        "line_name": "3号线",
+        "sequence": "20",
+        "station_name": "Sta29"
+    },
+    {
+        "district": "Dist1",
+        "id": "1065",
+        "line_name": "3号线",
+        "sequence": "21",
+        "station_name": "Sta126"
+    },
+    {
+        "district": "Dist5",
+        "id": "1067",
+        "line_name": "3号线",
+        "sequence": "22",
+        "station_name": "Sta40"
+    },
+    {
+        "district": "Dist5",
+        "id": "1068",
+        "line_name": "3号线",
+        "sequence": "23",
+        "station_name": "Sta131"
+    },
+    {
+        "district": "Dist5",
+        "id": "1069",
+        "line_name": "3号线",
+        "sequence": "24",
+        "station_name": "Sta39"
+    },
+    {
+        "district": "Dist5",
+        "id": "1070",
+        "line_name": "3号线",
+        "sequence": "25",
+        "station_name": "Sta100"
+    },
+    {
+        "district": "Dist5",
+        "id": "1072",
+        "line_name": "3号线",
+        "sequence": "26",
+        "station_name": "Sta167"
+    },
+    {
+        "district": "Dist5",
+        "id": "1073",
+        "line_name": "3号线",
+        "sequence": "27",
+        "station_name": "Sta113"
+    },
+    {
+        "district": "Dist5",
+        "id": "1074",
+        "line_name": "3号线",
+        "sequence": "28",
+        "station_name": "Sta141"
+    },
+    {
+        "district": "Dist5",
+        "id": "1075",
+        "line_name": "3号线",
+        "sequence": "29",
+        "station_name": "Sta142"
+    },
+    {
+        "district": "Dist5",
+        "id": "1076",
+        "line_name": "3号线",
+        "sequence": "30",
+        "station_name": "Sta158"
+    },
+    {
+        "district": "Dist5",
+        "id": "1077",
+        "line_name": "3号线",
+        "sequence": "31",
+        "station_name": "Sta44"
+    },
+    {
+        "district": "Dist5",
+        "id": "1078",
+        "line_name": "3号线",
+        "sequence": "32",
+        "station_name": "Sta117"
+    },
+    {
+        "district": "Dist5",
+        "id": "1079",
+        "line_name": "3号线",
+        "sequence": "33",
+        "station_name": "Sta147"
+    },
+    {
+        "district": "Dist5",
+        "id": "1080",
+        "line_name": "3号线",
+        "sequence": "34",
+        "station_name": "Sta42"
+    },
+    {
+        "district": "Dist5",
+        "id": "1081",
+        "line_name": "3号线",
+        "sequence": "35",
+        "station_name": "Sta35"
+    },
+    {
+        "district": "Dist5",
+        "id": "1082",
+        "line_name": "3号线",
+        "sequence": "36",
+        "station_name": "Sta109"
+    },
+    {
+        "district": "Dist5",
+        "id": "1084",
+        "line_name": "3号线",
+        "sequence": "37",
+        "station_name": "Sta33"
+    },
+    {
+        "district": "Dist5",
+        "id": "1085",
+        "line_name": "3号线",
+        "sequence": "38",
+        "station_name": "Sta112"
+    },
+    {
+        "district": "Dist5",
+        "id": "1086",
+        "line_name": "3号线",
+        "sequence": "39",
+        "station_name": "Sta153"
+    },
+    {
+        "district": "Dist5",
+        "id": "1087",
+        "line_name": "3号线",
+        "sequence": "40",
+        "station_name": "Sta125"
+    },
+    {
+        "district": "Dist5",
+        "id": "1088",
+        "line_name": "3号线",
+        "sequence": "41",
+        "station_name": "Sta121"
+    },
+    {
+        "district": "Dist5",
+        "id": "1089",
+        "line_name": "3号线",
+        "sequence": "42",
+        "station_name": "Sta11"
+    },
+    {
+        "district": "Dist5",
+        "id": "1091",
+        "line_name": "10号线",
+        "sequence": "5",
+        "station_name": "Sta134"
+    },
+    {
+        "district": "Dist8",
+        "id": "1092",
+        "line_name": "4号线",
+        "sequence": "2",
+        "station_name": "Sta59"
+    },
+    {
+        "district": "Dist8",
+        "id": "1093",
+        "line_name": "4号线",
+        "sequence": "3",
+        "station_name": "Sta19"
+    },
+    {
+        "district": "Dist8",
+        "id": "1094",
+        "line_name": "4号线",
+        "sequence": "4",
+        "station_name": "Sta62"
+    },
+    {
+        "district": "Dist8",
+        "id": "1095",
+        "line_name": "4号线",
+        "sequence": "5",
+        "station_name": "Sta165"
+    },
+    {
+        "district": "Dist8",
+        "id": "1096",
+        "line_name": "4号线",
+        "sequence": "6",
+        "station_name": "Sta58"
+    },
+    {
+        "district": "Dist8",
+        "id": "1097",
+        "line_name": "4号线",
+        "sequence": "7",
+        "station_name": "Sta38"
+    },
+    {
+        "district": "Dist5",
+        "id": "1098",
+        "line_name": "5号线",
+        "sequence": "8",
+        "station_name": "Sta43"
+    },
+    {
+        "district": "Dist5",
+        "id": "1099",
+        "line_name": "5号线",
+        "sequence": "7",
+        "station_name": "Sta10"
+    },
+    {
+        "district": "Dist5",
+        "id": "1100",
+        "line_name": "5号线",
+        "sequence": "6",
+        "station_name": "Sta96"
+    },
+    {
+        "district": "Dist5",
+        "id": "1101",
+        "line_name": "5号线",
+        "sequence": "5",
+        "station_name": "Sta132"
+    },
+    {
+        "district": "Dist5",
+        "id": "1102",
+        "line_name": "5号线",
+        "sequence": "4",
+        "station_name": "Sta37"
+    },
+    {
+        "district": "Dist5",
+        "id": "1103",
+        "line_name": "5号线",
+        "sequence": "3",
+        "station_name": "Sta16"
+    },
+    {
+        "district": "Dist5",
+        "id": "1104",
+        "line_name": "5号线",
+        "sequence": "2",
+        "station_name": "Sta69"
+    },
+    {
+        "district": "Dist5",
+        "id": "1107",
+        "line_name": "5号线",
+        "sequence": "1",
+        "station_name": "Sta54"
+    },
+    {
+        "district": "Dist6",
+        "id": "1108",
+        "line_name": "11号线",
+        "sequence": "27",
+        "station_name": "Sta120"
+    },
+    {
+        "district": "Dist6",
+        "id": "1109",
+        "line_name": "11号线",
+        "sequence": "26",
+        "station_name": "Sta130"
+    },
+    {
+        "district": "Dist6",
+        "id": "1110",
+        "line_name": "11号线",
+        "sequence": "25",
+        "station_name": "Sta146"
+    },
+    {
+        "district": "Dist6",
+        "id": "1111",
+        "line_name": "11号线",
+        "sequence": "24",
+        "station_name": "Sta25"
+    },
+    {
+        "district": "Dist6",
+        "id": "1112",
+        "line_name": "11号线",
+        "sequence": "23",
+        "station_name": "Sta3"
+    },
+    {
+        "district": "Dist8",
+        "id": "1113",
+        "line_name": "11号线",
+        "sequence": "21",
+        "station_name": "Sta46"
+    },
+    {
+        "district": "Dist8",
+        "id": "1114",
+        "line_name": "11号线",
+        "sequence": "20",
+        "station_name": "Sta86"
+    },
+    {
+        "district": "Dist8",
+        "id": "1115",
+        "line_name": "11号线",
+        "sequence": "19",
+        "station_name": "Sta15"
+    },
+    {
+        "district": "Dist5",
+        "id": "1117",
+        "line_name": "11号线",
+        "sequence": "18",
+        "station_name": "Sta162"
+    },
+    {
+        "district": "Dist5",
+        "id": "1118",
+        "line_name": "11号线",
+        "sequence": "16",
+        "station_name": "Sta118"
+    },
+    {
+        "district": "Dist5",
+        "id": "1119",
+        "line_name": "11号线",
+        "sequence": "13",
+        "station_name": "Sta20"
+    },
+    {
+        "district": "Dist5",
+        "id": "1120",
+        "line_name": "11号线",
+        "sequence": "12",
+        "station_name": "Sta55"
+    },
+    {
+        "district": "Dist5",
+        "id": "1121",
+        "line_name": "11号线",
+        "sequence": "11",
+        "station_name": "Sta70"
+    },
+    {
+        "district": "Dist5",
+        "id": "1122",
+        "line_name": "11号线",
+        "sequence": "10",
+        "station_name": "Sta13"
+    },
+    {
+        "district": "Dist5",
+        "id": "1124",
+        "line_name": "11号线",
+        "sequence": "8",
+        "station_name": "Sta140"
+    },
+    {
+        "district": "Dist10",
+        "id": "1125",
+        "line_name": "11号线",
+        "sequence": "7",
+        "station_name": "Sta77"
+    },
+    {
+        "district": "Dist10",
+        "id": "1126",
+        "line_name": "11号线",
+        "sequence": "6",
+        "station_name": "Sta122"
+    },
+    {
+        "district": "Dist10",
+        "id": "1127",
+        "line_name": "11号线",
+        "sequence": "5",
+        "station_name": "Sta36"
+    },
+    {
+        "district": "Dist10",
+        "id": "1128",
+        "line_name": "11号线",
+        "sequence": "4",
+        "station_name": "Sta166"
+    },
+    {
+        "district": "Dist10",
+        "id": "1129",
+        "line_name": "11号线",
+        "sequence": "3",
+        "station_name": "Sta99"
+    },
+    {
+        "district": "Dist10",
+        "id": "1130",
+        "line_name": "11号线",
+        "sequence": "2",
+        "station_name": "Sta124"
+    },
+    {
+        "district": "Dist10",
+        "id": "1131",
+        "line_name": "11号线",
+        "sequence": "1",
+        "station_name": "Sta28"
+    },
+    {
+        "district": "Dist5",
+        "id": "1132",
+        "line_name": "11号线",
+        "sequence": "28",
+        "station_name": "Sta82"
+    },
+    {
+        "district": "Dist5",
+        "id": "1133",
+        "line_name": "11号线",
+        "sequence": "29",
+        "station_name": "Sta164"
+    },
+    {
+        "district": "Dist1",
+        "id": "1134",
+        "line_name": "11号线",
+        "sequence": "30",
+        "station_name": "Sta152"
+    },
+    {
+        "district": "Dist5",
+        "id": "1135",
+        "line_name": "11号线",
+        "sequence": "31",
+        "station_name": "Sta45"
+    },
+    {
+        "district": "Dist5",
+        "id": "1136",
+        "line_name": "10号线",
+        "sequence": "18",
+        "station_name": "Sta75"
+    },
+    {
+        "district": "Dist3",
+        "id": "1137",
+        "line_name": "12号线",
+        "sequence": "16",
+        "station_name": "Sta136"
+    },
+    {
+        "district": "Dist3",
+        "id": "1138",
+        "line_name": "12号线",
+        "sequence": "17",
+        "station_name": "Sta137"
+    },
+    {
+        "district": "Dist8",
+        "id": "1139",
+        "line_name": "12号线",
+        "sequence": "15",
+        "station_name": "Sta101"
+    },
+    {
+        "district": "Dist8",
+        "id": "1140",
+        "line_name": "12号线",
+        "sequence": "14",
+        "station_name": "Sta17"
+    },
+    {
+        "district": "Dist5",
+        "id": "1141",
+        "line_name": "12号线",
+        "sequence": "13",
+        "station_name": "Sta26"
+    },
+    {
+        "district": "Dist5",
+        "id": "1142",
+        "line_name": "12号线",
+        "sequence": "12",
+        "station_name": "Sta90"
+    },
+    {
+        "district": "Dist5",
+        "id": "1143",
+        "line_name": "12号线",
+        "sequence": "11",
+        "station_name": "Sta95"
+    },
+    {
+        "district": "Dist6",
+        "id": "1144",
+        "line_name": "12号线",
+        "sequence": "9",
+        "station_name": "Sta93"
+    },
+    {
+        "district": "Dist6",
+        "id": "1145",
+        "line_name": "12号线",
+        "sequence": "8",
+        "station_name": "Sta92"
+    },
+    {
+        "district": "Dist6",
+        "id": "1146",
+        "line_name": "12号线",
+        "sequence": "6",
+        "station_name": "Sta32"
+    },
+    {
+        "district": "Dist6",
+        "id": "1147",
+        "line_name": "12号线",
+        "sequence": "5",
+        "station_name": "Sta91"
+    },
+    {
+        "district": "Dist8",
+        "id": "1149",
+        "line_name": "10号线",
+        "sequence": "1",
+        "station_name": "Sta157"
+    },
+    {
+        "district": "Dist5",
+        "id": "1150",
+        "line_name": "10号线",
+        "sequence": "3",
+        "station_name": "Sta168"
+    },
+    {
+        "district": "Dist5",
+        "id": "1151",
+        "line_name": "10号线",
+        "sequence": "6",
+        "station_name": "Sta85"
+    },
+    {
+        "district": "Dist5",
+        "id": "1152",
+        "line_name": "10号线",
+        "sequence": "7",
+        "station_name": "Sta2"
+    },
+    {
+        "district": "Dist5",
+        "id": "1153",
+        "line_name": "10号线",
+        "sequence": "8",
+        "station_name": "Sta4"
+    },
+    {
+        "district": "Dist5",
+        "id": "1154",
+        "line_name": "10号线",
+        "sequence": "9",
+        "station_name": "Sta103"
+    },
+    {
+        "district": "Dist5",
+        "id": "1155",
+        "line_name": "10号线",
+        "sequence": "10",
+        "station_name": "Sta145"
+    },
+    {
+        "district": "Dist5",
+        "id": "1156",
+        "line_name": "10号线",
+        "sequence": "11",
+        "station_name": "Sta88"
+    },
+    {
+        "district": "Dist5",
+        "id": "1157",
+        "line_name": "10号线",
+        "sequence": "13",
+        "station_name": "Sta94"
+    },
+    {
+        "district": "Dist5",
+        "id": "1158",
+        "line_name": "10号线",
+        "sequence": "14",
+        "station_name": "Sta160"
+    },
+    {
+        "district": "Dist5",
+        "id": "1159",
+        "line_name": "10号线",
+        "sequence": "15",
+        "station_name": "Sta7"
+    },
+    {
+        "district": "Dist5",
+        "id": "1160",
+        "line_name": "10号线",
+        "sequence": "16",
+        "station_name": "Sta6"
+    },
+    {
+        "district": "Dist5",
+        "id": "1161",
+        "line_name": "10号线",
+        "sequence": "17",
+        "station_name": "Sta8"
+    },
+    {
+        "district": "Dist5",
+        "id": "1162",
+        "line_name": "10号线",
+        "sequence": "19",
+        "station_name": "Sta102"
+    },
+    {
+        "district": "Dist8",
+        "id": "1165",
+        "line_name": "12号线",
+        "sequence": "8",
+        "station_name": "Sta31"
+    },
+    {
+        "district": "Dist6",
+        "id": "1166",
+        "line_name": "12号线",
+        "sequence": "10",
+        "station_name": "Sta72"
+    },
+    {
+        "district": "Dist6",
+        "id": "1169",
+        "line_name": "12号线",
+        "sequence": "7",
+        "station_name": "Sta116"
+    },
+    {
+        "district": "Dist1",
+        "id": "1170",
+        "line_name": "2号线",
+        "sequence": "23",
+        "station_name": "Sta129"
+    },
+    {
+        "district": "Dist1",
+        "id": "1171",
+        "line_name": "2号线",
+        "sequence": "16",
+        "station_name": "Sta47"
+    },
+    {
+        "district": "Dist2",
+        "id": "1172",
+        "line_name": "12号线",
+        "sequence": "4",
+        "station_name": "Sta60"
+    },
+    {
+        "district": "Dist2",
+        "id": "1173",
+        "line_name": "12号线",
+        "sequence": "3",
+        "station_name": "Sta148"
+    },
+    {
+        "district": "Dist2",
+        "id": "1174",
+        "line_name": "12号线",
+        "sequence": "2",
+        "station_name": "Sta73"
+    },
+    {
+        "district": "Dist5",
+        "id": "1175",
+        "line_name": "11号线",
+        "sequence": "14",
+        "station_name": "Sta23"
+    },
+    {
+        "district": "Dist5",
+        "id": "1176",
+        "line_name": "11号线",
+        "sequence": "15",
+        "station_name": "Sta56"
+    },
+    {
+        "district": "Dist5",
+        "id": "1177",
+        "line_name": "11号线",
+        "sequence": "17",
+        "station_name": "Sta115"
+    },
+    {
+        "district": "Dist1",
+        "id": "1178",
+        "line_name": "11号线",
+        "sequence": "22",
+        "station_name": "Sta63"
+    },
+    {
+        "district": "Dist5",
+        "id": "1185",
+        "line_name": "10号线",
+        "sequence": "2",
+        "station_name": "Sta114"
+    },
+    {
+        "district": "Dist5",
+        "id": "1186",
+        "line_name": "10号线",
+        "sequence": "4",
+        "station_name": "Sta135"
+    },
+    {
+        "district": "Dist8",
+        "id": "1187",
+        "line_name": "10号线",
+        "sequence": "12",
+        "station_name": "Sta87"
+    },
+    {
+        "district": "Dist5",
+        "id": "1188",
+        "line_name": "4号线",
+        "sequence": "1",
+        "station_name": "Sta84"
+    },
+    {
+        "district": "Dist5",
+        "id": "1191",
+        "line_name": "11号线",
+        "sequence": "9",
+        "station_name": "Sta111"
+    },
+    {
+        "district": "Dist8",
+        "id": "1173",
+        "line_name": "3号线",
+        "sequence": "18",
+        "station_name": "Sta5"
+    },
+    {
+        "district": "Dist8",
+        "id": "1174",
+        "line_name": "3号线",
+        "sequence": "19",
+        "station_name": "Sta98"
+    },
+    {
+        "district": "Dist1",
+        "id": "1170",
+        "line_name": "1号线",
+        "sequence": "1",
+        "station_name": "Sta104"
+    },
+    {
+        "district": "Dist7",
+        "id": "1172",
+        "line_name": "3号线",
+        "sequence": "1",
+        "station_name": "Sta155"
+    },
+    {
+        "district": "Dist2",
+        "id": "1175",
+        "line_name": "12号线",
+        "sequence": "1",
+        "station_name": "Sta14"
+    }
+]
