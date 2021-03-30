@@ -34,3 +34,4 @@ def predict(select, time, name):
     elif select == 'route':
         data = pre_route(time, name)
         return '{}'.format(int(data))
+
